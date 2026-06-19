@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💎 AswinDate · Terms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #E4B95B;
+            --dark: #1A1A2E;
+            --soft-white: #F9F7F3;
+            --gradient-primary: linear-gradient(145deg, #2D2A54 0%, #1A1A2E 100%);
+            --gradient-accent: linear-gradient(135deg, #E4B95B, #D4A35A);
+        }
+        * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(228,185,91,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .terms-container {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            padding: 40px 36px;
+            border-radius: 32px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            border: 1px solid rgba(228,185,91,0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .terms-container::-webkit-scrollbar { width: 4px; }
+        .terms-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 8px; }
+        .avatar-premium {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 16px;
+            border: 4px solid var(--gold);
+            box-shadow: 0 12px 30px rgba(228,185,91,0.25);
+        }
+        .avatar-premium img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .terms-text {
+            font-size: 14px;
+            line-height: 1.8;
+            padding: 20px 24px;
+            background: #F8F6F2;
+            border-radius: 20px;
+            margin: 18px 0 22px;
+            color: #2D2A3A;
+            border: 1px solid rgba(228,185,91,0.08);
+        }
+        .terms-text h5 {
+            color: var(--gold);
+            font-weight: 800;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+        .terms-text h5:first-of-type { margin-top: 0; }
+        .terms-text p { margin-bottom: 10px; }
+        .terms-text hr {
+            border: none;
+            border-top: 2px dashed rgba(228,185,91,0.2);
+            margin: 18px 0;
+        }
+        .form-check-input {
+            border-radius: 6px;
+            border: 2px solid #D0D0D8;
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+        .form-check-input:checked {
+            background-color: var(--gold);
+            border-color: var(--gold);
+        }
+        .form-check-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-left: 8px;
+        }
+        .btn-accept-premium {
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: 60px;
+            padding: 14px;
+            font-weight: 800;
+            width: 100%;
+            color: var(--dark);
+            transition: all 0.25s;
+            box-shadow: 0 4px 16px rgba(228,185,91,0.25);
+            font-size: 16px;
+        }
+        .btn-accept-premium:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .btn-accept-premium:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(228,185,91,0.4);
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--dark);
+            text-align: center;
+        }
+        .gold-text { color: var(--gold); }
+    </style>
+</head>
+<body>
+    <div class="terms-container">
+        <div class="avatar-premium">
+            <img src="{{ url_for('static', filename='aswin.jpeg') }}" alt="Aswin"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Aswin&size=110&background=E4B95B&color=1A1A2E&bold=true'">
+        </div>
+        <h3>Hi {{ username }}! <span class="gold-text">😊</span></h3>
+
+        <div class="terms-text">
+            <h5>📖 English</h5>
+            <p>👋 Hi Girls!</p>
+            <p>I'm Aswin. You probably know me already, right? Or maybe this is our first time meeting. Either way, welcome! 😄</p>
+            <p>To be honest, I didn't have many options. 😅 When night comes, my friends suddenly get hungry and start asking me, <b>"Bro, do you have any money?"</b> But most of the time, my wallet is as empty as my fridge! 🤭</p>
+            <p>That's when my friends came up with a brilliant idea:</p>
+            <p><b>"Don't sell yourself, bro... just rent yourself out!"</b> 😂</p>
+            <p>So they get some money for food, and I get a chance to spend time with amazing people like you. Everybody wins! 😍</p>
+            <p>In simple terms, it's one stone, two birds. 😉 🐦🐦</p>
+            <p>Through this app, you can join different activities with me:</p>
+            <p>
+                📞 Voice Call with Aswin<br>
+                🎥 Video Call with Aswin<br>
+                🍽️ Dinner with Aswin<br>
+                🚶 Outing with Aswin
+            </p>
+            <p>Each activity has its own time slot. If you're interested, you can participate and try your luck. Once the countdown ends, the highest participant gets the slot.</p>
+            <p><b>So, are you ready? Let's start the game and see who becomes the lucky girl! 😊</b></p>
+            <hr>
+            <h5>📖 Malayalam</h5>
+            <p>👋 ഹായ് ഗേൾസ്!</p>
+            <p>ഞാൻ അസ്വിൻ. എന്നെ അറിയാമായിരിക്കുമല്ലോ, അല്ലേ? അല്ലെങ്കിൽ ഇതായിരിക്കും നമ്മുടെ ആദ്യ പരിചയം. എന്തായാലും സ്വാഗതം! 😄</p>
+            <p>സത്യം പറഞ്ഞാൽ എനിക്ക് വേറെ വഴിയൊന്നും ഇല്ല കേട്ടോ! 😅 രാത്രി ആയാൽ എന്റെ കൂട്ടുകാർക്ക് വിശക്കും. അപ്പോൾ സ്ഥിരം ചോദ്യം:</p>
+            <p><b>"ഡാ... കൈയിൽ കാശുണ്ടോ?"</b> 🤨</p>
+            <p>പക്ഷേ എന്റെ പോക്കറ്റ് മിക്ക ദിവസവും ശൂന്യമായിരിക്കും. 🤭</p>
+            <p>അങ്ങനെ ഒരു ദിവസം അവർ ഒരു സൂപ്പർ ഐഡിയ പറഞ്ഞു:</p>
+            <p><b>"നിന്നെ വിൽക്കണ്ട ഡാ... വാടകയ്ക്ക് കൊടുത്താൽ മതി!"</b> 😂</p>
+            <p>അപ്പോൾ അവർക്ക് ഭക്ഷണം കഴിക്കാൻ കാശും കിട്ടും, നിങ്ങളോടൊപ്പം കുറച്ച് സമയം ചിലവഴിക്കാൻ എനിക്ക് അവസരവും കിട്ടും. അങ്ങനെ എല്ലാവരും ഹാപ്പി! 😍</p>
+            <p><b>സിംപിൾ ആയി പറഞ്ഞാൽ, ഒരു വെടിക്ക് രണ്ട് പക്ഷി! 😉 🐦🐦</b></p>
+            <p>ഈ ആപ്പിലൂടെ നിങ്ങൾക്ക് എന്നോടൊപ്പം വിവിധ ആക്ടിവിറ്റികളിൽ പങ്കെടുക്കാം:</p>
+            <p>
+                📞 അസ്വിനോടൊപ്പം വോയ്സ് കോൾ<br>
+                🎥 അസ്വിനോടൊപ്പം വീഡിയോ കോൾ<br>
+                🍽️ അസ്വിനോടൊപ്പം ഡിന്നർ<br>
+                🚶 അസ്വിനോടൊപ്പം ഔട്ടിംഗ്
+            </p>
+            <p>ഓരോ ആക്ടിവിറ്റിക്കും പ്രത്യേകം സമയക്രമം ഉണ്ടായിരിക്കും. നിങ്ങൾക്ക് താൽപര്യമുണ്ടെങ്കിൽ പങ്കെടുക്കാം. കൗണ്ട്ഡൗൺ അവസാനിക്കുമ്പോൾ ഏറ്റവും കൂടുതൽ തുക നൽകിയ ആൾക്കാണ് ആ അവസരം ലഭിക്കുക.</p>
+            <p><b>അപ്പോൾ റെഡിയാണോ? നമുക്ക് കളി തുടങ്ങാം! എന്നെ സ്വന്തമാക്കാൻ ആർ വരും? ആരാകും ആ ഭാഗ്യശാലി? 😊</b></p>
+            <p><small>തുടരുന്നതിലൂടെ ഈ ആപ്പിന്റെ നിബന്ധനകളും വ്യവസ്ഥകളും നിങ്ങൾ അംഗീകരിക്കുന്നതാണ്.</small></p>
+        </div>
+
+        <div class="form-check mb-4 d-flex align-items-center gap-2">
+            <input type="checkbox" class="form-check-input" id="agreeCheck">
+            <label class="form-check-label" for="agreeCheck"><strong>I agree to the terms</strong></label>
+        </div>
+
+        <button class="btn-accept-premium" id="acceptBtn" disabled>
+            <i class="fas fa-heart me-2"></i>Accept & Continue
+        </button>
+    </div>
+
+    <script>
+        document.getElementById('agreeCheck').onchange = function() {
+            document.getElementById('acceptBtn').disabled = !this.checked;
+        };
+        document.getElementById('acceptBtn').onclick = function() {
+            fetch('{{ url_for('agree_terms') }}', {method: 'POST'})
+                .then(r => r.json())
+                .then(data => { if (data.success) window.location.href = '{{ url_for('home') }}'; });
+        };
+    </script>
+</body>
+</html>
