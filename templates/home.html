@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💎 AuraDate · premium matching</title>
+  <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ----- PREMIUM THEME (Bumble / Aria inspired) ----- */
+    :root {
+      --gold: #E4B95B;
+      --dark: #1A1A2E;
+      --soft-white: #F9F7F3;
+      --gradient-primary: linear-gradient(145deg, #2D2A54 0%, #1A1A2E 100%);
+      --gradient-accent: linear-gradient(135deg, #E4B95B, #D4A35A);
+      --shadow-premium: 0 20px 40px -12px rgba(0,0,0,0.25);
+      --border-glow: 0 0 0 1px rgba(228, 185, 91, 0.2);
+    }
+    * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--soft-white);
+      padding-bottom: 90px;
+      background-image: radial-gradient(circle at 10% 30%, rgba(228,185,91,0.03) 0%, transparent 30%);
+    }
+    /* premium navbar */
+    .navbar-premium {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(228,185,91,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .navbar-brand i { -webkit-text-fill-color: initial; color: var(--gold); margin-right: 6px; }
+    .coins-badge-premium {
+      background: var(--gradient-accent);
+      padding: 6px 18px;
+      border-radius: 40px;
+      color: #1A1A2E;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(228,185,91,0.3);
+    }
+    .user-avatar-premium {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1A1A2E;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+    }
+    .user-avatar-premium:hover { transform: scale(1.05); }
+
+    /* premium cards */
+    .option-card-premium {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-premium);
+      transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
+      margin-bottom: 24px;
+      border: 1px solid rgba(228,185,91,0.15);
+      cursor: pointer;
+      position: relative;
+    }
+    .option-card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 50px -12px rgba(26,26,46,0.25);
+      border-color: var(--gold);
+    }
+    .option-card-premium .card-img-top {
+      height: 210px;
+      object-fit: cover;
+      width: 100%;
+      transition: transform 0.5s ease;
+    }
+    .option-card-premium:hover .card-img-top { transform: scale(1.02); }
+    .option-badge-premium {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(26,26,46,0.7);
+      backdrop-filter: blur(6px);
+      padding: 4px 16px;
+      border-radius: 40px;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .option-card-body {
+      padding: 20px 22px 22px;
+    }
+    .option-card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.2px;
+    }
+    .option-card-desc {
+      color: #6B6B7B;
+      font-size: 14px;
+      margin: 6px 0 16px;
+      font-weight: 400;
+    }
+    .btn-start-premium {
+      background: var(--gradient-accent);
+      border: none;
+      border-radius: 60px;
+      padding: 10px 0;
+      color: var(--dark);
+      font-weight: 800;
+      width: 100%;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(228,185,91,0.25);
+      font-size: 15px;
+    }
+    .btn-start-premium:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(228,185,91,0.4);
+    }
+
+    /* history premium */
+    .history-premium {
+      background: white;
+      border-radius: 18px;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      border-left: 5px solid var(--gold);
+      transition: all 0.2s;
+    }
+    .history-premium.won { border-left-color: #2ECC71; }
+    .history-premium.lost { border-left-color: #E74C3C; }
+    .winner-tag-premium {
+      background: var(--gradient-accent);
+      color: var(--dark);
+      padding: 2px 14px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* leaderboard premium */
+    .leaderboard-premium {
+      background: white;
+      border-radius: 28px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(228,185,91,0.1);
+      position: sticky;
+      top: 90px;
+    }
+    .leaderboard-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .rank-badge-premium {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .rank-badge-premium.gold { background: linear-gradient(135deg, #F9D976, #E4B95B); color: #1A1A2E; }
+    .rank-badge-premium.silver { background: linear-gradient(135deg, #D0D0D0, #A8A8A8); color: #1A1A2E; }
+    .rank-badge-premium.bronze { background: linear-gradient(135deg, #E3B47A, #C58A5A); color: white; }
+
+    /* modal premium */
+    .betting-modal .modal-content {
+      border-radius: 32px;
+      border: none;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+    }
+    .betting-modal .modal-header {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 20px 28px;
+    }
+    .betting-modal .modal-header .btn-close { filter: brightness(0) invert(1); opacity: 0.7; }
+
+    .avatar-premium {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+      border: 4px solid var(--gold);
+      box-shadow: 0 12px 30px rgba(228,185,91,0.25);
+      animation: float 4s ease-in-out infinite;
+    }
+    .avatar-premium img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .cloud-premium {
+      background: #F1EFEC;
+      padding: 12px 24px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .timer-premium {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      color: var(--dark);
+      font-size: 32px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(228,185,91,0.25);
+    }
+
+    .bet-display-premium {
+      background: #F8F6F2;
+      border-radius: 18px;
+      padding: 14px 8px;
+      text-align: center;
+      border: 1px solid rgba(228,185,91,0.15);
+    }
+    .bet-display-premium.highlight { border-color: var(--gold); background: white; }
+    .bet-amount-premium { font-size: 26px; font-weight: 800; color: var(--dark); }
+
+    .bot-bet-item-premium {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 14px;
+      background: white;
+      border-radius: 40px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .bot-avatar-small-premium {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+      flex-shrink: 0;
+      border: 1px solid var(--gold);
+    }
+
+    .bet-buttons-premium .btn {
+      border-radius: 60px;
+      padding: 8px 20px;
+      font-weight: 700;
+      margin: 4px;
+      border: none;
+      transition: all 0.15s;
+    }
+    .btn-bet-10-premium { background: #2ECC71; color: white; }
+    .btn-bet-50-premium { background: #F1C40F; color: #1A1A2E; }
+    .btn-bet-100-premium { background: #E67E22; color: white; }
+    .btn-bet-10-premium:hover, .btn-bet-50-premium:hover, .btn-bet-100-premium:hover { transform: scale(1.04); }
+
+    .result-win-premium {
+      background: linear-gradient(135deg, #2ECC71, #27AE60);
+      padding: 20px;
+      border-radius: 24px;
+      color: white;
+    }
+    .result-lose-premium {
+      background: linear-gradient(135deg, #E74C3C, #C0392B);
+      padding: 20px;
+      border-radius: 24px;
+      color: white;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .option-card-premium .card-img-top { height: 160px; }
+      .leaderboard-premium { position: relative; top: 0; margin-top: 30px; }
+      .avatar-premium { width: 80px; height: 80px; }
+    }
+    /* extra gloss */
+    .gloss {
+      background: linear-gradient(145deg, rgba(255,255,255,0.5), transparent);
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .gold-text { color: var(--gold); }
+    .bg-soft-gold { background: rgba(228,185,91,0.06); }
+  </style>
+</head>
+<body>
+
+<!-- ===== PREMIUM NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-premium">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fas fa-gem"></i>AswinDate</a>
+    <div class="d-flex align-items-center gap-3">
+      <span class="coins-badge-premium"><i class="fas fa-coins me-1"></i> {{ user.coins }}</span>
+      <div class="dropdown">
+        <div class="user-avatar-premium" data-bs-toggle="dropdown">{{ user.username[0].upper() }}</div>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="{{ url_for('profile') }}"><i class="fas fa-user me-2 gold-text"></i>Profile</a></li>
+          <li><a class="dropdown-item" href="#" onclick="addCoins()"><i class="fas fa-plus-circle me-2 gold-text"></i>Add Coins</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-lg-8">
+      <h5 class="fw-bold mb-4" style="color: var(--dark); letter-spacing: -0.3px;">
+        <i class="fas fa-sparkles gold-text me-2"></i>Choose your experience
+      </h5>
+      <div class="row">
+        {% for key, option in options.items() %}
+        <div class="col-md-6">
+          <div class="option-card-premium" onclick="openBetting('{{ key }}')">
+            <div class="position-relative">
+              <!-- premium images (realistic placeholders, replaced with actual images) -->
+              <img src="{{ option.image }}" alt="{{ option.name }}" class="card-img-top" loading="lazy"
+                   onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=250&fit=crop&crop=center&auto=format'">
+              <span class="option-badge-premium"><i class="far fa-clock me-1"></i> {{ option.time }}</span>
+            </div>
+            <div class="option-card-body">
+              <h6 class="option-card-title"><i class="fas {{ option.icon }} me-2 gold-text"></i>{{ option.name }}</h6>
+              <p class="option-card-desc">{{ option.desc }}</p>
+              <button class="btn-start-premium" onclick="event.stopPropagation(); openBetting('{{ key }}')">
+                <i class="fas fa-gem me-2"></i>Start bidding
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- history -->
+      <h5 class="mt-5 mb-3 fw-bold" style="color: var(--dark);"><i class="fas fa-clock-rotate-left gold-text me-2"></i>Your journey</h5>
+      {% if history %}
+        {% for h in history %}
+        <div class="history-premium {% if h.winner == user.username %}won{% else %}lost{% endif %}">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="fw-bold">{{ h.option|title }}</div>
+              <small class="text-muted"><i class="fas fa-user-circle me-1"></i> {{ h.opponent }} • ₹{{ h.bet_amount }}</small>
+            </div>
+            <div class="text-end">
+              {% if h.winner == user.username %}
+                <span class="winner-tag-premium">🏆 Won</span>
+              {% else %}
+                <span class="badge bg-secondary bg-opacity-25 text-dark">Lost</span>
+              {% endif %}
+              <br><small class="text-muted">{{ h.timestamp.strftime('%d %b, %I:%M %p') }}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="text-center py-4 text-muted bg-soft-gold rounded-4"><i class="fas fa-inbox fa-2x mb-2 d-block gold-text"></i>No adventures yet</div>
+      {% endif %}
+    </div>
+
+    <!-- right column: leaderboard + info -->
+    <div class="col-lg-4">
+      <div class="leaderboard-premium">
+        <h6 class="fw-bold mb-3" style="color: var(--dark);"><i class="fas fa-trophy gold-text me-2"></i>Top daters</h6>
+        {% for u in leaderboard %}
+        <div class="leaderboard-item">
+          <div class="d-flex align-items-center">
+            <div class="rank-badge-premium {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</div>
+            <div><div class="fw-bold">{{ u.username }}</div><small class="text-muted">{{ u.coins }} coins</small></div>
+          </div>
+          {% if loop.index <= 3 %}<span class="fs-5">{% if loop.index == 1 %}👑{% elif loop.index == 2 %}🥈{% elif loop.index == 3 %}🥉{% endif %}</span>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="card mt-4 border-0 shadow-sm rounded-4 bg-white">
+        <div class="card-body p-4">
+          <h6 class="fw-bold" style="color: var(--dark);"><i class="fas fa-circle-info gold-text me-2"></i>How it works</h6>
+          <div class="d-flex gap-3 mb-2 align-items-center"><span class="badge rounded-pill bg-dark bg-opacity-10 text-dark" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;">1</span><small>Pick your date</small></div>
+          <div class="d-flex gap-3 mb-2 align-items-center"><span class="badge rounded-pill bg-dark bg-opacity-10 text-dark" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;">2</span><small>Bet against 3–5 bots</small></div>
+          <div class="d-flex gap-3 mb-2 align-items-center"><span class="badge rounded-pill bg-dark bg-opacity-10 text-dark" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;">3</span><small>Outbid in 60s</small></div>
+          <div class="d-flex gap-3 align-items-center"><span class="badge rounded-pill bg-dark bg-opacity-10 text-dark" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;">4</span><small>Win & get the number! 💕</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PREMIUM BETTING MODAL ===== -->
+<div class="modal fade betting-modal" id="bettingModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="bettingTitle">💎 Bid & win</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body betting-arena p-4">
+        <div id="bettingContent">
+          <div class="text-center">
+            <div class="avatar-premium">
+              <img src="{{ url_for('static', filename='aswin.jpeg') }}" alt="Aswin" id="aswinAvatar"
+                   onerror="this.src='https://ui-avatars.com/api/?name=Aswin&size=110&background=E4B95B&color=1A1A2E&bold=true'">
+            </div>
+            <div class="cloud-premium" id="cloudMessage">✨ Let's begin</div>
+          </div>
+
+          <div class="text-center my-4">
+            <div class="timer-premium" id="timerDisplay">60</div>
+            <small class="text-muted mt-2 d-block">seconds left</small>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-4">
+              <div class="bet-display-premium highlight">
+                <small class="text-muted">Your bid</small>
+                <div class="bet-amount-premium" id="userBet">₹0</div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="bet-display-premium">
+                <small class="text-muted">Users</small>
+                <div id="botBetsContainer"><div class="bot-bet-item-premium"><span>Loading...</span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bet-buttons-premium text-center" id="betButtons">
+            <button class="btn btn-bet-10-premium" onclick="increaseBet(10)">+₹10</button>
+            <button class="btn btn-bet-50-premium" onclick="increaseBet(50)">+₹50</button>
+            <button class="btn btn-bet-100-premium" onclick="increaseBet(100)">+₹100</button>
+          </div>
+
+          <div id="resultMessage" class="text-center mt-4" style="display:none;">
+            <div id="resultContent"></div>
+            <button class="btn btn-dark mt-3 rounded-pill px-5" onclick="closeBetting()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // helpers
+  const $ = id => document.getElementById(id);
+  const cloudMsg = $('cloudMessage');
+  const userBet = $('userBet');
+  const botContainer = $('botBetsContainer');
+  const timerDisplay = $('timerDisplay');
+  const resultMsg = $('resultMessage');
+  const resultContent = $('resultContent');
+  const betButtons = $('betButtons');
+
+  let currentBetId = null;
+  let timerInterval = null;
+  let statusInterval = null;
+  let bettingModal = null;
+
+  function openBetting(option) {
+    const names = {
+      {% for key, value in options.items() %}
+        '{{ key }}': '{{ value.name }}',
+      {% endfor %}
+    };
+    $('bettingTitle').textContent = '💎 ' + names[option];
+    cloudMsg.textContent = 'Starting ' + names[option] + ' ...';
+    userBet.innerHTML = '₹0';
+    resultMsg.style.display = 'none';
+    betButtons.style.display = 'block';
+    timerDisplay.textContent = '60';
+    botContainer.innerHTML = '<div class="bot-bet-item-premium"><span>Loading...</span></div>';
+
+    if (!bettingModal) bettingModal = new bootstrap.Modal(document.getElementById('bettingModal'));
+    bettingModal.show();
+    startBet(option);
+  }
+
+  function startBet(option) {
+    fetch('/start_bet', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({option: option, bet_amount: 10})
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        currentBetId = data.bet_id;
+        userBet.innerHTML = '₹' + data.user_bet;
+        updateBotBets(data.bot_bets);
+        cloudMsg.textContent = 'You: ₹' + data.user_bet + ' vs ' + data.bots.length + ' bots';
+
+        let timeLeft = data.duration;
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            getBetResult();
+          }
+        }, 1000);
+
+        clearInterval(statusInterval);
+        statusInterval = setInterval(updateBetStatus, 2000);
+      }
+    });
+  }
+
+  function updateBotBets(bots) {
+    botContainer.innerHTML = '';
+    for (const [bot, amount] of Object.entries(bots)) {
+      const div = document.createElement('div');
+      div.className = 'bot-bet-item-premium';
+      div.innerHTML = `
+        <div class="d-flex align-items-center">
+          <div class="bot-avatar-small-premium">
+            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(bot)}&size=28&background=E4B95B&color=1A1A2E&bold=true" alt="${bot}">
+          </div>
+          <span class="fw-bold">${bot}</span>
+        </div>
+        <span class="fw-bold">₹${amount}</span>
+      `;
+      botContainer.appendChild(div);
+    }
+  }
+
+  function updateBetStatus() {
+    if (!currentBetId) return;
+    fetch('/get_bet_status/' + currentBetId)
+      .then(r => r.json())
+      .then(data => {
+        if (data.is_active) {
+          userBet.innerHTML = '₹' + data.user_bet;
+          updateBotBets(data.bot_bets);
+          timerDisplay.textContent = Math.ceil(data.time_left);
+        }
+      });
+  }
+
+  function increaseBet(amount) {
+    if (!currentBetId) return;
+    fetch('/increase_bet', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({bet_id: currentBetId, increment: amount})
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        userBet.innerHTML = '₹' + data.user_bet;
+        updateBotBets(data.bot_bets);
+        cloudMsg.textContent = 'Raised to ₹' + data.user_bet + '!';
+        document.querySelector('.coins-badge-premium').innerHTML = '<i class="fas fa-coins me-1"></i> ' + data.user_coins;
+      }
+    });
+  }
+
+  function getBetResult() {
+    if (!currentBetId) return;
+    fetch('/get_bet_status/' + currentBetId)
+      .then(r => r.json())
+      .then(data => {
+        betButtons.style.display = 'none';
+        resultMsg.style.display = 'block';
+        if (data.winner === data.username) {
+          resultContent.className = 'result-win-premium';
+          resultContent.innerHTML = `
+            <h5>🎉 You won, ${data.username}!</h5>
+            <p class="mb-0">Call Aswin: <strong>+978989898989</strong></p>
+          `;
+          cloudMsg.textContent = '🎉 You got the number!';
+        } else {
+          resultContent.className = 'result-lose-premium';
+          resultContent.innerHTML = `<h5>😅 ${data.winner} won</h5><p class="mb-0">Better luck next time</p>`;
+          cloudMsg.textContent = '💪 Keep trying!';
+        }
+        clearInterval(statusInterval);
+      });
+  }
+
+  function closeBetting() {
+    if (bettingModal) bettingModal.hide();
+    clearInterval(timerInterval);
+    clearInterval(statusInterval);
+    currentBetId = null;
+    setTimeout(() => location.reload(), 300);
+  }
+
+  function addCoins() {
+    const amount = prompt('Add coins (10, 50, 100, 500)', '50');
+    if (amount) {
+      fetch('/add_coins', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({amount: parseInt(amount)})
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          document.querySelector('.coins-badge-premium').innerHTML = '<i class="fas fa-coins me-1"></i> ' + data.new_balance;
+          alert('✅ Added ' + amount + ' coins!');
+        }
+      });
+    }
+  }
+</script>
+</body>
+</html>
